@@ -26,9 +26,6 @@ const useData = (url) => {
 				setLoading(false);
 				setError(err.message);
 			});
-		// setTimeout(() => {
-		// 	setLoading(false);
-		// }, 2000);
 	}, [url]);
 	return { loading, data, error };
 };
@@ -36,7 +33,8 @@ const useData = (url) => {
 const App = () => {
 	const { loading, data, error } = useData("/api/laptop");
 	const [sorted, setSorted] = useState(false);
-	const [laptops, setLaptops] = useState(data);
+	const [laptops, setLaptops] = useState({ data });
+	const [search, setSearch] = useState("");
 
 	const sortLaptops = () => {
 		if (sorted) {
@@ -48,6 +46,18 @@ const App = () => {
 		setSorted(!sorted);
 	};
 
+	// const filteredLaptops = data.filter((laptop) => {
+	// 	return laptop.name.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+	// });
+
+	// WHY IS DATA NOT ITERABLE AND PROPERTY IS NULL
+
+	// const filteredLaptops = [];
+	// for (const laptop of laptops) {
+	// 	filteredLaptops.push(laptop.name);
+	// }
+	// console.log(filteredLaptops);
+
 	return (
 		<div className='App'>
 			{error && <div>{error}</div>}
@@ -57,7 +67,13 @@ const App = () => {
 					<h1>Laptops</h1>
 					<hr />
 					<div>
-						<input type='text' />
+						<input
+							type='text'
+							placeholder={"Search laptops"}
+							onChange={(e) => {
+								setSearch(e.target.value);
+							}}
+						/>
 						<hr />
 						<button onClick={sortLaptops}>
 							{sorted
