@@ -35,6 +35,18 @@ const useData = (url) => {
 
 const App = () => {
 	const { loading, data, error } = useData("/api/laptop");
+	const [sorted, setSorted] = useState(false);
+	const [laptops, setLaptops] = useState(data);
+
+	const sortLaptops = () => {
+		if (sorted) {
+			data.sort((a, b) => b.weigth - a.weigth);
+		} else {
+			data.sort((a, b) => a.weigth - b.weigth);
+		}
+		setLaptops(laptops);
+		setSorted(!sorted);
+	};
 
 	return (
 		<div className='App'>
@@ -43,6 +55,16 @@ const App = () => {
 			{data && (
 				<>
 					<h1>Laptops</h1>
+					<hr />
+					<div>
+						<input type='text' />
+						<hr />
+						<button onClick={sortLaptops}>
+							{sorted
+								? "Click to arrange laptops descending by weight!"
+								: "Click to arrange laptops ascending by weight!"}
+						</button>
+					</div>
 					{data.map((laptop) => (
 						<Laptop key={laptop.name} data={data} laptop={laptop} />
 					))}

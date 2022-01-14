@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const Laptop = (props) => {
-	const laptop = props.laptop;
+const Laptop = ({ laptop }) => {
+	// const laptop = props.laptop;
 	const [show, setShow] = useState(false);
 	function toggle() {
 		setShow(!show);
