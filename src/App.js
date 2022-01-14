@@ -26,6 +26,9 @@ const useData = (url) => {
 				setLoading(false);
 				setError(err.message);
 			});
+		// setTimeout(() => {
+		// 	setLoading(false);
+		// }, 2000);
 	}, [url]);
 	return { loading, data, error };
 };
@@ -35,11 +38,16 @@ const App = () => {
 
 	return (
 		<div className='App'>
-			<h1>Laptops</h1>
-			{data &&
-				data.map((laptop) => (
-					<Laptop key={laptop.name} data={data} laptop={laptop} />
-				))}
+			{error && <div>{error}</div>}
+			{loading && <LoadingMask />}
+			{data && (
+				<>
+					<h1>Laptops</h1>
+					{data.map((laptop) => (
+						<Laptop key={laptop.name} data={data} laptop={laptop} />
+					))}
+				</>
+			)}
 		</div>
 	);
 };
