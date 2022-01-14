@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Laptop = (data) => {
+const Laptop = (props) => {
+	const laptop = props.laptop;
+	const [show, setShow] = useState(false);
+	function toggle() {
+		setShow(!show);
+	}
+
 	return (
 		<div>
 			<hr />
-			<div>{data.laptop.name}</div>
+			<div>Laptop Name: {laptop.name}</div>
+			{show && (
+				<>
+					<div>Laptop Brand: {laptop.brand}</div>
+					<div>Laptop Weigth: {laptop.weigth}</div>
+				</>
+			)}
+			<button onClick={toggle}>{show ? "Show Less" : "Show More"}</button>
 			<hr />
 		</div>
 	);
