@@ -84,7 +84,7 @@ const App = () => {
 
 	//FILTER SEARCH LAPTOPS BY NAME______________________________
 	const filteredLaptops = laptopsData.filter((laptop) => {
-		return laptop.name.toLowerCase().includes(search.toLowerCase());
+		return laptop.brand.toLowerCase().includes(search.toLowerCase());
 	});
 
 	return (
@@ -111,9 +111,13 @@ const App = () => {
 								</button>
 							</div>
 						</div>
-						{filteredLaptops.map((laptop) => (
-							<Laptop key={laptop.name} laptop={laptop} />
-						))}
+						{filteredLaptops.length === 0 ? (
+							<p>There's no matching laptop, please modify your search!</p>
+						) : (
+							filteredLaptops.map((laptop) => (
+								<Laptop key={laptop.name} laptop={laptop} />
+							))
+						)}
 					</>
 				)}
 			</main>

@@ -40,9 +40,38 @@ main {
 	gap: 10px;
 }
 
-.loading-mask div {
-	background-color: white;
-	border-radius: 25px;
+.lds-hourglass {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+.lds-hourglass:after {
+	content: " ";
+	display: block;
+	border-radius: 50%;
+	width: 0;
+	height: 0;
+	margin: 8px;
+	box-sizing: border-box;
+	border: 32px solid white;
+	border-color: rgb(226, 222, 222) transparent rgb(226, 222, 222) transparent;
+	animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+	0% {
+		transform: rotate(0);
+		animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
+	50% {
+		transform: rotate(900deg);
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	100% {
+		transform: rotate(1800deg);
+	}
+}
+/* .loading-mask div {
 	height: 150px;
 	width: 150px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -54,30 +83,31 @@ main {
 	justify-content: center;
 	align-items: center;
 	transform: rotate(45deg);
-}
-
+} */
+/* 
 .loading-mask .spinner {
 	border: 2px solid #aaa;
 	border-top-color: black;
 	background-color: white;
 	border-radius: 100%;
+
 	width: 50px;
 	height: 50px;
-	-webkit-animation: spin 1.5s ease-in-out infinite;
-	animation: spin 1.5s ease-in-out infinite;
+	-webkit-animation: spin 1s ease-in-out infinite;
+	animation: spin 1s ease-in-out infinite;
 }
 
-@-webkit-keyframes spin {
-	to {
-		transform: rotate(360deg);
-	}
+.spinnerDot {
+	font-size: 25px;
+	display: flex;
+	border-radius: 100%;
 }
 
 @keyframes spin {
 	to {
 		transform: rotate(360deg);
 	}
-}
+} */
 
 .laptopCard {
 	background-color: whitesmoke;
@@ -103,10 +133,11 @@ main {
 	justify-content: center;
 	min-height: 70;
 
-	width: 200px;
-	background-color: lightgrey;
+	width: 240px;
+	background-color: rgb(226, 222, 222);
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: 2px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -162,4 +193,14 @@ input {
 }
 input::placeholder {
 	padding: 5px;
+}
+
+@media screen and (max-width: 450px) {
+	h1 {
+		font-size: 20px;
+	}
+	.navish {
+		width: 330px;
+		height: 200px;
+	}
 }

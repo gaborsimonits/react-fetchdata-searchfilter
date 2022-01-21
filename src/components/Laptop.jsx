@@ -9,7 +9,7 @@ const Laptop = ({ laptop }) => {
 
 	return (
 		<div className='laptopCard'>
-			<h4>Laptop Name: {laptop.name}</h4>
+			<h4>Laptop Brand: {laptop.brand}</h4>
 
 			<button id='detailsBtn' onClick={toggle}>
 				{show ? "Hide Details" : "Show Details"}
@@ -18,7 +18,7 @@ const Laptop = ({ laptop }) => {
 			{show && (
 				<>
 					<div className='laptopCard2'>
-						<p>Laptop Brand: {laptop.brand} </p>
+						<p>Laptop Name: {laptop.name}</p>
 						<p>Laptop Weigth: {laptop.weigth}</p>
 					</div>
 				</>
