@@ -106,7 +106,9 @@ const App = () => {
 							/>
 							<div className='sort'>
 								<p>Sort by weigth</p>
-								<button onClick={sortLaptops}>{sorted ? "↑" : "↓"}</button>
+								<button id='sortBtn' onClick={sortLaptops}>
+									{sorted ? "↑" : "↓"}
+								</button>
 							</div>
 						</div>
 						{filteredLaptops.map((laptop) => (

@@ -136,6 +136,21 @@ main {
 	font-size: 16px;
 }
 
+#sortBtn {
+	width: 30px;
+}
+
+#detailsBtn {
+	width: 100px;
+	padding: 2px;
+}
+
+#sortBtn,
+#detailsBtn:hover {
+	cursor: pointer;
+	/* background-color: white; */
+}
+
 input {
 	width: 200px;
 	height: 30px;

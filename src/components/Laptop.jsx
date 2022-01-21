@@ -11,7 +11,9 @@ const Laptop = ({ laptop }) => {
 		<div className='laptopCard'>
 			<h4>Laptop Name: {laptop.name}</h4>
 
-			<button onClick={toggle}>{show ? "Hide Details" : "Show Details"}</button>
+			<button id='detailsBtn' onClick={toggle}>
+				{show ? "Hide Details" : "Show Details"}
+			</button>
 
 			{show && (
 				<>
