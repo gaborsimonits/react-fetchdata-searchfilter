@@ -1,3 +1,147 @@
-.App {
-  text-align: center;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	text-decoration: none;
+	font-family: inherit;
+}
+
+body {
+	background-color: white;
+}
+
+App {
+	font-family: arial;
+}
+
+main {
+	padding: 50px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 25px;
+}
+
+.loading-mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: whitesmoke;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loading-mask div {
+	background-color: white;
+	border-radius: 50px;
+	height: 100px;
+	width: 200px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.loading-mask .spinner {
+	border: 2px solid #aaa;
+	border-top-color: black;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	-webkit-animation: spin 1.5s ease-in-out infinite;
+	animation: spin 1.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.laptopCard {
+	background-color: whitesmoke;
+	border: 1px solid whitesmoke;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	min-height: 170;
+
+	width: 300px;
+	gap: 15px;
+	padding: 10px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-basis: content;
+}
+
+.laptopCard2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 70;
+
+	width: 200px;
+	background-color: lightgrey;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.navish {
+	padding: 50px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 25px;
+	width: 500px;
+	height: 250px;
+
+	border: 2px solid whitesmoke;
+	background-color: whitesmoke;
+	border-radius: 100px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.sort {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	width: 200px;
+	background-color: white;
+	border: 1px solid black;
+	height: 30px;
+	font-size: 16px;
+}
+
+input {
+	width: 200px;
+	height: 30px;
+	border: 1px solid black;
+	font-size: 16px;
+}
+input::placeholder {
+	padding: 5px;
 }

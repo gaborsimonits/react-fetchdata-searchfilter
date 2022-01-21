@@ -1,91 +1,120 @@
 import React, { useEffect, useState } from "react";
 import LoadingMask from "./components/LoadingMask";
+import axios from "axios";
 import Laptop from "./components/Laptop";
 import "./App.css";
 
-const useData = (url) => {
-	const [loading, setLoading] = useState(true);
-	const [data, setData] = useState(null);
-	const [error, setError] = useState(null);
+//CUSTOM HOOK FETCH w ERRORHANDLING______________________________
+// const useData = (url) => {
+// 	const [loading, setLoading] = useState(true);
+// 	const [data, setData] = useState(null);
+// 	const [error, setError] = useState(null);
 
+// 	useEffect(() => {
+// 		fetch(url)
+// 			.then((res) => {
+// 				if (!res.ok) {
+// 					throw Error("Could not fetch the data");
+// 				}
+// 				return res.json();
+// 			})
+// 			.then((data) => {
+// 				setData(data);
+// 				setLoading(false);
+// 				setError(null);
+// 				console.log(data);
+// 			})
+// 			.catch((err) => {
+// 				setLoading(false);
+// 				setError(err.message);
+// 			});
+// 	}, [url]);
+// 	return { loading, data, error };
+// };
+
+const App = () => {
+	// const { loading, data, error } = useData("/api/laptop");
+
+	const [laptopsData, setLaptopsData] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
+	const [search, setSearch] = useState("");
+	const [sorted, setSorted] = useState(false);
+
+	//AXIOS FETCH______________________________
+
+	// const url = "/api/laptop";
+	// const getData = async () => {
+	// 	try {
+	// 		const res = await axios.get(url);
+	// 		setLaptopsData(res.data);
+	// 		console.log(data);
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// 	setIsLoading(false);
+	// };
+
+	// useEffect(() => {
+	// 	getData();
+	// }, []);
+
+	//FETCH______________________________
 	useEffect(() => {
-		fetch(url)
+		fetch("/api/laptop")
 			.then((res) => {
-				if (!res.ok) {
-					throw Error("Could not fetch the data");
-				}
 				return res.json();
 			})
 			.then((data) => {
-				setData(data);
-				setLoading(false);
-				setError(null);
 				console.log(data);
-			})
-			.catch((err) => {
-				setLoading(false);
-				setError(err.message);
+				setLaptopsData(data);
+				setIsLoading(false);
 			});
-	}, [url]);
-	return { loading, data, error };
-};
+	}, []);
 
-const App = () => {
-	const { loading, data, error } = useData("/api/laptop");
-	const [sorted, setSorted] = useState(false);
-	const [laptops, setLaptops] = useState({ data });
-	const [search, setSearch] = useState("");
-
+	//SORT LAPTOPS BY WEIGHT______________________________
 	const sortLaptops = () => {
 		if (sorted) {
-			data.sort((a, b) => b.weigth - a.weigth);
+			laptopsData.sort((a, b) => b.weigth - a.weigth);
 		} else {
-			data.sort((a, b) => a.weigth - b.weigth);
+			laptopsData.sort((a, b) => a.weigth - b.weigth);
 		}
-		setLaptops(laptops);
 		setSorted(!sorted);
 	};
 
-	// const filteredLaptops = data.filter((laptop) => {
-	// 	return laptop.name.toLocaleLowerCase().includes(search.toLocaleLowerCase());
-	// });
-
-	// WHY IS DATA NOT ITERABLE AND PROPERTY IS NULL
-
-	// const filteredLaptops = [];
-	// for (const laptop of laptops) {
-	// 	filteredLaptops.push(laptop.name);
-	// }
-	// console.log(filteredLaptops);
+	//FILTER SEARCH LAPTOPS BY NAME______________________________
+	const filteredLaptops = laptopsData.filter((laptop) => {
+		return laptop.name.toLowerCase().includes(search.toLowerCase());
+	});
 
 	return (
 		<div className='App'>
-			{error && <div>{error}</div>}
-			{loading && <LoadingMask />}
-			{data && (
-				<>
-					<h1>Laptops</h1>
-					<hr />
-					<div>
-						<input
-							type='text'
-							placeholder={"Search laptops"}
-							onChange={(e) => {
-								setSearch(e.target.value);
-							}}
-						/>
-						<hr />
-						<button onClick={sortLaptops}>
-							{sorted
-								? "Click to arrange laptops descending by weight!"
-								: "Click to arrange laptops ascending by weight!"}
-						</button>
-					</div>
-					{data.map((laptop) => (
-						<Laptop key={laptop.name} data={data} laptop={laptop} />
-					))}
-				</>
-			)}
+			{/* {error && <div>{error}</div>} */}
+
+			{isLoading && <LoadingMask />}
+			<main>
+				{laptopsData && (
+					<>
+						<div className='navish'>
+							<h1>Laptops</h1>
+							<input
+								type='text'
+								placeholder='Search laptops'
+								onChange={(e) => {
+									setSearch(e.target.value);
+								}}
+							/>
+							<div className='sort'>
+								<p>Sort by weigth</p>
+								<button onClick={sortLaptops}>{sorted ? "↑" : "↓"}</button>
+							</div>
+						</div>
+						{filteredLaptops.map((laptop) => (
+							<Laptop key={laptop.name} laptop={laptop} />
+						))}
+					</>
+				)}
+			</main>
 		</div>
 	);
 };

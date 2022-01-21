@@ -8,17 +8,19 @@ const Laptop = ({ laptop }) => {
 	}
 
 	return (
-		<div>
-			<hr />
-			<div>Laptop Name: {laptop.name}</div>
+		<div className='laptopCard'>
+			<h4>Laptop Name: {laptop.name}</h4>
+
+			<button onClick={toggle}>{show ? "Hide Details" : "Show Details"}</button>
+
 			{show && (
 				<>
-					<div>Laptop Brand: {laptop.brand}</div>
-					<div>Laptop Weigth: {laptop.weigth}</div>
+					<div className='laptopCard2'>
+						<p>Laptop Brand: {laptop.brand} </p>
+						<p>Laptop Weigth: {laptop.weigth}</p>
+					</div>
 				</>
 			)}
-			<button onClick={toggle}>{show ? "Show Less" : "Show More"}</button>
-			<hr />
 		</div>
 	);
 };
