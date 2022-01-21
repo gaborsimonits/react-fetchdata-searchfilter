@@ -36,30 +36,33 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .loading-mask div {
 	background-color: white;
-	border-radius: 50px;
-	height: 100px;
-	width: 200px;
+	border-radius: 25px;
+	height: 150px;
+	width: 150px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
 		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 	display: flex;
-	flex-direction: column;
+
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	transform: rotate(45deg);
 }
 
 .loading-mask .spinner {
 	border: 2px solid #aaa;
 	border-top-color: black;
+	background-color: white;
 	border-radius: 100%;
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
 	-webkit-animation: spin 1.5s ease-in-out infinite;
 	animation: spin 1.5s ease-in-out infinite;
 }
