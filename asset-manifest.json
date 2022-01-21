@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-fetchdata-searchfilter/static/css/main.21abb08a.chunk.css",
-    "main.js": "/react-fetchdata-searchfilter/static/js/main.103014f5.chunk.js",
-    "main.js.map": "/react-fetchdata-searchfilter/static/js/main.103014f5.chunk.js.map",
+    "main.css": "/react-fetchdata-searchfilter/static/css/main.a8527be4.chunk.css",
+    "main.js": "/react-fetchdata-searchfilter/static/js/main.47eb1033.chunk.js",
+    "main.js.map": "/react-fetchdata-searchfilter/static/js/main.47eb1033.chunk.js.map",
     "runtime-main.js": "/react-fetchdata-searchfilter/static/js/runtime-main.3d9ec01d.js",
     "runtime-main.js.map": "/react-fetchdata-searchfilter/static/js/runtime-main.3d9ec01d.js.map",
     "static/js/2.004b3ba9.chunk.js": "/react-fetchdata-searchfilter/static/js/2.004b3ba9.chunk.js",
     "static/js/2.004b3ba9.chunk.js.map": "/react-fetchdata-searchfilter/static/js/2.004b3ba9.chunk.js.map",
     "index.html": "/react-fetchdata-searchfilter/index.html",
-    "static/css/main.21abb08a.chunk.css.map": "/react-fetchdata-searchfilter/static/css/main.21abb08a.chunk.css.map",
+    "static/css/main.a8527be4.chunk.css.map": "/react-fetchdata-searchfilter/static/css/main.a8527be4.chunk.css.map",
     "static/js/2.004b3ba9.chunk.js.LICENSE.txt": "/react-fetchdata-searchfilter/static/js/2.004b3ba9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3d9ec01d.js",
     "static/js/2.004b3ba9.chunk.js",
-    "static/css/main.21abb08a.chunk.css",
-    "static/js/main.103014f5.chunk.js"
+    "static/css/main.a8527be4.chunk.css",
+    "static/js/main.47eb1033.chunk.js"
   ]
 }
